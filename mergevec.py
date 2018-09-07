@@ -120,7 +120,7 @@ def merge_vec_files(vec_directory, output_vec_file):
 			val = struct.unpack('<iihh', content[:12])
 			prev_image_size = val[1]
 	except IOError as e:
-		print('An IO error occured while processing the file: {0}'.format(f))
+		print('An IO error occured while processing the file: {0}'.format(files[0]))
 		exception_response(e)
 
 
@@ -135,7 +135,7 @@ def merge_vec_files(vec_directory, output_vec_file):
 				image_size = val[1]
 				if image_size != prev_image_size:
 					err_msg = """The image sizes in the .vec files differ. These values must be the same. \n The image size of file {0}: {1}\n
-						The image size of previous files: {0}""".format(f, image_size, prev_image_size)
+						The image size of previous files: {2}""".format(f, image_size, prev_image_size)
 					sys.exit(err_msg)
 
 				total_num_images += num_images
